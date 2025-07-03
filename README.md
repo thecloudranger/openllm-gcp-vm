@@ -1,4 +1,4 @@
-# 🦙 OpenLLM on Google Cloud VM (NVIDIA L4)
+# OpenLLM on Google Cloud VM (NVIDIA L4)
 
 This project lets you deploy an OpenLLM server on a Google Compute Engine VM with GPU support (NVIDIA L4).
 
