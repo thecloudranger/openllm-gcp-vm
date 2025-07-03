@@ -1,4 +1,4 @@
-# OpenLLM on Google Cloud VM (NVIDIA L4)
+# 🦙 OpenLLM on Google Cloud VM (NVIDIA L4)
 
 This project lets you deploy an OpenLLM server on a Google Compute Engine VM with GPU support (NVIDIA L4).
 
@@ -35,42 +35,55 @@ This project lets you deploy an OpenLLM server on a Google Compute Engine VM wit
    chmod +x startup.sh
    ./startup.sh
    ```
-   This installs CUDA, drivers, Python, and OpenLLM.
 
 3. **Edit & copy `openllm.service`**
+
    ```bash
    sudo cp openllm.service /etc/systemd/system/openllm.service
    sudo systemctl daemon-reload
    sudo systemctl enable openllm
    sudo systemctl start openllm
    ```
+
    Update the `ExecStart` model to your choice!
 
 4. **Test**
+
    - Open http://YOUR_EXTERNAL_IP/chat
    - Or call the API:
-   ```bash
-    curl http://127.0.0.1:3000/v1/completions \
-      -H "Content-Type: application/json" \
-      -d '{"prompt": "Say hi", "max_tokens": 20}'
-   ```
+     ```bash
+     curl http://127.0.0.1:3000/v1/completions        -H "Content-Type: application/json"        -d '{"prompt": "Say hi", "max_tokens": 20}'
+     ```
 
 5. **Benchmark**
-   ```bash
-    python3 benchmark.py
-   ```   
 
-6. **Stop & start**
    ```bash
-    gcloud compute instances stop YOUR_VM
-    gcloud compute instances start YOUR_VM
+   python3 benchmark.py
    ```
 
-## ⚡Tips
+6. **Stop & start**
+
+   ```bash
+   gcloud compute instances stop YOUR_VM
+   gcloud compute instances start YOUR_VM
+   ```
+
+---
+
+## 🚀 Launch on GCP
+
+[![Open in Cloud Shell](https://gstatic.com/cloudssh/images/open-btn.png)](https://console.cloud.google.com/cloudshell/open?git_repo=https://github.com/thecloudranger/openllm-gcp-vm&cloudshell_tutorial=README.md)
+
+---
+
+## ⚡ Tips
+
 - Reserve a static IP if you want a fixed public endpoint.
-- Watch GPU usage: watch -n 1 nvidia-smi.
-- Tune your model in ExecStart or switch it later.
+- Watch GPU usage: `watch -n 1 nvidia-smi`.
+- Tune your model in `ExecStart` or switch it later.
+
+---
 
 ## 📜 License
-MIT — do whatever you want!
 
+MIT — do whatever you want!
